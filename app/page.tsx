@@ -1,4 +1,5 @@
 import { Eligibilite } from "@/components/sections/Eligibilite";
+import { Pourquoi } from "@/components/sections/Pourquoi";
 import { buttonVariants } from "@/components/ui/button";
 import { contenu } from "@/data/contenu";
 
@@ -23,6 +24,7 @@ export default function Home() {
         </div>
       </div>
 
+      <Pourquoi />
       <Eligibilite />
     </main>
   );
