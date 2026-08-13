@@ -15,6 +15,11 @@ export interface ConseilsDeroulement {
   apres: string[];
 }
 
+export interface CritereEligibilite {
+  label: string;
+  valeur: string;
+}
+
 export interface Contenu {
   hero: {
     titre: string;
@@ -27,11 +32,26 @@ export interface Contenu {
     chiffres: ChiffreImpact[];
     fermeture: string;
   };
+  eligibilite: {
+    titre: string;
+    intro: string;
+    criteres: CritereEligibilite[];
+  };
   deroulement: {
     titre: string;
     intro: string;
     etapes: EtapeDeroulement[];
     conseils: ConseilsDeroulement;
+  };
+  simulateur: {
+    labelEligible: string;
+    labelNonEligible: string;
+    labelDelai: string;
+    messageEligible: string;
+    messageNonEligibleContexte: string;
+    messageDelaiIntro: string;
+    messageDelaiConseil: string;
+    ctaCentre: string;
   };
   disclaimerMedical: string;
 }
@@ -62,6 +82,16 @@ export const contenu: Contenu = {
       },
     ],
     fermeture: "Le sang ne se fabrique pas en laboratoire. Il vient d'une seule source : toi.",
+  },
+  eligibilite: {
+    titre: "Suis-je éligible ?",
+    intro:
+      "Trois critères simples déterminent ton éligibilité du jour. Vérifie ta situation en 30 secondes.",
+    criteres: [
+      { label: "Âge", valeur: "18 à 65 ans révolus" },
+      { label: "Poids", valeur: "50 kg minimum" },
+      { label: "Délai entre deux dons", valeur: "3 mois (homme), 4 mois (femme)" },
+    ],
   },
   deroulement: {
     titre: "Comment ça se passe",
@@ -113,6 +143,17 @@ export const contenu: Contenu = {
         "Évite l'effort physique intense le reste de la journée.",
       ],
     },
+  },
+  simulateur: {
+    labelEligible: "Éligible",
+    labelNonEligible: "Non éligible",
+    labelDelai: "Délai en cours",
+    messageEligible:
+      "Trois mois séparent chaque don pour un homme, quatre pour une femme. Prends note de ta date.",
+    messageNonEligibleContexte: "Si ta situation change, tu pourras retenter le simulateur.",
+    messageDelaiIntro: "Tu as donné trop récemment pour redonner aujourd'hui.",
+    messageDelaiConseil: "Prévois de t'hydrater dans les jours qui précèdent ta prochaine visite.",
+    ctaCentre: "Trouve un centre",
   },
   disclaimerMedical:
     "Ces informations sont simplifiées pour t'orienter. Seul un professionnel de santé, lors de l'entretien pré-don, peut confirmer ton aptitude au don.",
